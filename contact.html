@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>United states of yasu</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <main>
+        <!--タイトルビュー-->
+        <div class="area-top-view">
+            <div class="container">
+                <img class="back" src="./img/Mainvisual/Mainvis_back.png">
+                <img class="img" id="title" src="./img/Mainvisual/Minvis_title.png">
+                <img class="img" id="uxu" src="./img/Mainvisual/Mainvis_uxu.png">
+            </div>
+        </div>
+    
+
+        
+<div class="home">
+        <!--ナビゲーション-->
+            <div class="nav-container">
+                <ul class="nav-area">
+                    <li class="nav-icon"><a href="./index.html"><img src="./img/nav/nav_homeicon.png"></a></li>
+                    <li class="nav-icon"><a href="./member.html"><img src="./img/nav/nav_membericon.png"></a></li>
+                    <li class="nav-icon"><a href="./contact.html"><img src="./img/nav/nav_mailicon.png"></a></li>
+                    <li class="nav-icon"><a href=""><img src="./img/nav/nav_biwakoicon.png"></a></li>
+                </ul>
+            </div>
+
+
+
+            <!--お問い合わせフォーム-->
+            <section class="contact-area">
+                <div class="container">
+
+                    <div class="contact-title">
+                        <h1 class="ttl-contact">CONTACT</h1>
+                    </div>
+
+                    <div class="contact-home-area">
+                        <div class="contact-p">
+                            <p>United States of Yasuならびに所属メンバーへのお問い合わせは、以下のフォームよりお寄せください。</p>
+                        </div>
+
+                        <div class="contact-home-style">
+                            <form action="contact.php" method="post">
+                                <dl>
+                                    <dt>お問い合わせ種別<span class="must">※</span></dt>
+                                    <dd>
+                                        <label><input type="checkbox" name="category" value="文句">文句</label>
+                                        <label><input type="checkbox" name="category" value="言い訳">言い訳</label>
+                                        <label><input type="checkbox" name="category" value="要求">要求</label>
+                                        <label><input type="checkbox" name="category" value="その他">その他</label>
+                                    </dd>
+                                    <dt>氏名<span class="must">※</span></dt> <dd><input type="text" name="name" required placeholder="文句優太郎"></dd>
+
+                                    <dt>氏名(フリガナ)<span class="must">※</span></dt> <dd><input type="text" name="name-kana" required placeholder="モンクユウタロウ"></dd>
+
+                                    <dt>メールアドレス(「送っていいのは、送られる覚悟のある奴だけだ。」)<span class="must">※</span></dt>
+                                    <dd><input type="email" name="email" required placeholder="sample@mail.com"></dd>
+
+                                    <dt>お問い合わせ内容</dt>
+                                    <dd>
+                                        <textarea name="comment" cols="96%" rows="20"></textarea>
+                                    </dd>
+                                </dl>
+                                <p class="submit"><input type="submit" name="submit" value="送信する"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+ 
+    </main>
+
+    <footer>
+        <div class="container">
+            <ul class="footer-nav">
+                <li class="home"><a href="/index.html">ほーむ</a></li>
+                <li class="member"><a href="/member.html">めんばー</a></li>
+                <li class="contact"><a href="/contact.html">おたより</a></li>
+                <li class="biwako"><a href="">びわこ</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

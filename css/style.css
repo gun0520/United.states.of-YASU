@@ -1,0 +1,780 @@
+@charset "utf-8";
+
+a {
+    color: #333;
+    text-decoration:none;
+}
+
+.container {
+    max-width: auto;
+    padding: 0 0;
+    margin: 0;
+}
+
+/*メインビュータイトル*/
+
+.area-top-view {
+    height: 626px;
+}
+
+.area-top-view > .container {
+    height: 626px;
+    display:flex;
+    padding: 0 0;
+    margin: 0 auto;
+}
+
+.area-top-view > .container > .back {
+    position: relative;
+}
+
+.area-top-view > .container > .img {
+    position: absolute;
+    height: 626px;
+}
+
+#title {
+    padding: 0 0;
+    margin: 0;
+    top:0px;;
+    left:40px;
+}
+
+#uxu {
+    padding: auto;
+    left: 726px;
+}
+
+/* ナビゲーション　*/
+
+.home > .nav-container {
+    background-image: url(../img/nav/nav_navback.png) ;
+    background-size: 100% 100%;
+    width: 160px;
+    height: 420px;
+    margin-top: 100px;
+    position: sticky;
+    top:100px;
+}
+
+.nav-area a {
+    display:block;
+}
+
+
+
+.nav-area > .nav-icon img{
+    position:relative;
+    top: 25px;
+    width: 80px;
+    height:80px;
+    padding: 0 0;
+    margin: 0 0;
+}
+
+
+
+.nav-area {
+    list-style: none;
+}
+
+
+/* USYについて */
+.head-home{
+    display: flex;
+    justify-content: center;
+}
+
+.head-home h1.ttl1 {
+    font-family: 'Jockey One';
+    font-size: 128px;
+    position: relative;
+    background: linear-gradient(transparent 60%,#358CED 90%);
+}
+
+.head-home h1.ttl2 {
+    font-family: 'Meiryo', 'Regular';
+    font-size: 64px;
+    position: relative;
+    top: 120px;
+}
+
+.text p {
+    font-family: 'Source Hans Sans JP', 'Regular';
+    font-size: 36px;
+    line-height: 90px;
+    text-align: center;
+}
+
+.text > .description > span.marker{
+    background: linear-gradient(transparent 60%,#358CED 90%);
+}
+
+/* 本拠地　*/
+.head-ie h1.ttl-ie{
+    display:flex;
+    justify-content: center;
+    margin-top: 400px;
+    margin-left: 45px;
+}
+
+.head-ie h1.ttl-ie {
+    font-family: 'Keifont','Regular';
+    font-size: 128px;
+    position: relative;
+}
+
+div.Map {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 300px;
+}
+
+
+/* フッター　*/
+footer {
+    background-color: #2F80ED;
+    height:198px;
+}
+
+footer > .container {
+    padding-top: 50px;
+    padding-left: 110px;
+}
+
+.footer-nav {
+    display: flex;
+}
+
+.footer-nav li + li{
+    margin-left: 128px;
+}
+
+.footer-nav > li {
+    list-style: none;
+}
+
+.footer-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Keifont','Regular';
+    font-size: 64px;
+}
+
+.footer-nav ul {
+    padding: 0;
+}
+
+/* メンバーカード　*/
+
+.member-area > .container > .member-title{
+    display: flex;
+    justify-content: center;
+    margin-left: 320px;
+    margin-bottom: 200px;
+}
+
+.member-area h1.ttl-member {
+    font-family: 'Keifont','Regular';
+    font-size: 128px;
+    position: relative;
+    background: linear-gradient(transparent 60%,#358CED 90%);
+}
+
+.member-card-area > .container {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    gap:50px;
+}
+
+.member-card {
+    width: 500px;
+    height: 900px;
+}
+
+img.member-img1 {
+    width: 454px;
+    height: 682px;
+    position: absolute;
+}
+
+img.member-img2 {
+    width:300px;
+    height: 300px;
+    position:relative;
+    top: 470px;
+    left: 250px;
+}
+
+/* お問い合わせフォーム　*/
+
+.contact-area > .container > .contact-title {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-title > h1.ttl-contact {
+    font-family: 'Keifont','Regular';
+    font-size: 128px;
+    position: relative;
+    background: linear-gradient(transparent 60%,#358CED 90%);
+}
+
+.contact-area > .container > .contact-home-area > .contact-p {
+    display:flex;
+    justify-content: center;
+}
+
+.contact-area > .container > .contact-home-area p{
+    font-family: 'Keifont','Regular';
+    font-size: 24px;
+    position: relative;
+    margin-bottom: 120px;
+}
+
+.contact-area > .container {
+    margin-left: 150px;
+}
+
+dl{
+    width: 990px;
+    border-top: 1px solid #358CED;
+    border-right: 1px solid #358CED;
+    border-left: 1px solid #358CED; 
+    margin-left: 160px;
+}
+
+dl dd {
+    border-bottom: 1px solid #358CED;
+    margin:0;
+    padding: 1em 0 1em 18em;
+}
+
+label {
+    margin-right: 1em;
+    
+}
+
+input {
+    font-size: 1em;
+    padding: 5px;
+}
+
+
+dl dt{
+    font-family: "Keifont","Regular";
+    font-size: 20px;
+    display: flex;
+    padding: 30px;
+}
+
+input[type="text"] {
+    width: 300px;
+}
+
+input[type="email"] {
+    width: 300px;
+}
+
+dl dt .must{
+    color: #d23939;
+}
+
+p.submit {
+    text-align: center;
+}
+
+input[type="submit"] {
+    padding: 20px 100px;
+    background: #358CED;
+    color:aliceblue;
+    font-weight: bolder;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* 各メンバーページ　*/
+.member-page-area > .member-page-title {
+    margin-top: 200px;
+}
+
+.member-page-area > .container{
+    margin-top: 40px;
+    margin-bottom: 400px;
+}
+
+.member-page-title {
+    display: flex;
+    justify-content:center;
+    margin-bottom: 200px;
+}
+
+.member-page-area > .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+
+h3.member-page-intro {
+    text-align: center;
+}
+
+.member-page-area > .container > .member-int-container{
+    width: 700px;
+    height: auto;
+}
+
+.member-page-area > .container > .member-page-img {
+    width: 454px;
+    height: 682px;
+    position:relative;
+}
+
+.member-page-area > .container > .member-page-pokemon {
+    width:400px;
+    height: 400px;
+    position:absolute;
+    top: 1620px;
+    left: 780px;
+    margin: 0;
+    padding: 0;
+}
+
+.member-page-title > h1.ttl-member {
+    font-family: 'Keifont','Regular';
+    font-size: 128px;
+    position: relative;
+    background: linear-gradient(transparent 60%,#358CED 90%);
+}
+
+.member-int-container > h3.member-page-intro {
+    font-family: 'Source Hans Sans JP', 'Regular';
+    font-size: 33px;
+    line-height: 150%;
+    text-align: center;
+}
+
+.member-page-area > .container > h1.ttl-member2 {
+    font-family: 'Keifont','Regular';
+    font-size: 80px;
+    left: 250px;
+    position: relative;
+    background: linear-gradient(transparent 60%,#358CED 90%);
+    padding: 0;
+    margin: 0;
+}
+
+/*　アニメーション定義 */
+.nav-icon:hover img {
+    transform: scale(1.2);
+    transition: 0.8s all;
+}
+
+.member-card:hover img {
+    transform: scale(1.2);
+    transition: 0.5s all;
+}
+
+footer{
+    ul{
+        li{
+            a {
+                font-size: 2rem;
+                &:hover {
+                    color: #000;
+                }
+            }
+        }
+    }
+}
+
+/*　CSSアニメーション */
+
+.area-top-view > .container > .img {
+    animation-duration: 2s;
+    animation-name: slidein;
+    animation-timing-function: ease;
+}
+
+.area-home-about > .container > .head-home {
+    animation-duration: 2s;
+    animation-name: slidein;
+    animation-timing-function: ease;
+}
+
+.area-home-about > .container > .text {
+    animation-duration: 2s;
+    animation-name: slidein;
+    animation-timing-function: ease;
+}
+
+
+.area-home-ie > .container > .head-ie {
+    animation-duration: 2s;
+    animation-name: slidein;
+    animation-timing-function: ease;
+}
+
+.member-area > .container > .member-title{
+        animation-duration: 2s;
+        animation-name: fadeup;
+        animation-timing-function: ease;
+}
+
+@keyframes slidein {
+    from{
+        margin-left:50%;
+        opacity: 0;
+    }
+
+    to {
+        margin-left: 0%;
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeup {
+    from{
+        opacity: 0;
+        font-size: 0;
+    }
+    to {
+        opacity: 100%;
+        font-size: 100%;
+    }
+}
+
+/* レスポンシブデザインチャレンジ */
+
+/*スマホ*/
+@media screen and (max-width: 768px) {
+    
+body{
+    width: 362px;
+}
+
+/*メインビュータイトル*/
+
+.area-top-view {
+    width: 362px;
+    height: 300px;
+}
+
+.area-top-view > .container {
+    width: 362px;
+    height: 300px;
+    display:flex;
+    padding: 0 0;
+    margin: 0 auto;
+}
+
+.area-top-view > .container > .back {
+    position: relative;
+    width: 362px;
+}
+
+.area-top-view > .container > .img {
+    position: absolute;
+    height: 300px;
+}
+
+.area-top-view > .container > #uxu {
+    position: absolute;
+    height: 300px;
+}
+
+#title {
+    padding: 0 0;
+    margin: 0;
+    top:0px;;
+    left:20px;
+}
+
+#uxu {
+    padding: auto;
+    left: 100px;
+    display: none;
+}
+
+
+/* ナビゲーション　*/
+
+.home > .nav-container {
+    background-image: url(../img/nav/nav_navback.png) ;
+    background-size: 100% 100%;
+    width: 80px;
+    height: 210px;
+    margin-top: 100px;
+    position: sticky;
+    top:100px;
+}
+
+.nav-area > .nav-icon img{
+    position:relative;
+    top: 15px;
+    left: -20px;
+    width: 40px;
+    height:40px;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+/* USYについて */
+.head-home h1.ttl1 {
+    font-family: 'Jockey One';
+    font-size: 64px;
+    position: relative;
+    background: linear-gradient(transparent 60%,#358CED 90%);
+}
+
+.head-home h1.ttl2 {
+    font-family: 'Meiryo', 'Regular';
+    font-size: 32px;
+    position: relative;
+    top: 70px;
+}
+
+.text p {
+    font-family: 'Source Hans Sans JP', 'Regular';
+    font-size: 10px;
+    line-height: 45px;
+    text-align: center;
+}
+
+/* 本拠地　*/
+
+.head-ie h1.ttl-ie {
+    font-family: 'Keifont','Regular';
+    font-size: 64px;
+    position: relative;
+}
+
+div.Map {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 300px;
+    width: 362px;
+    height: 400px;
+}
+
+/* フッター */
+
+footer > .container {
+    padding-top: 25px;
+    padding-left:2px;
+}
+
+.footer-nav li + li{
+    margin-left: 15px;
+}
+
+.footer-nav > li {
+    list-style: none;
+}
+
+.footer-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Keifont','Regular';
+    font-size: 18px;
+}
+
+footer {
+    height:99px;
+}
+
+/* メンバーカード */
+
+.member-area > .container > .member-title{
+    display: flex;
+    justify-content: center;
+    margin-left: 60px;
+    margin-bottom: 200px;
+}
+
+.member-area h1.ttl-member {
+    font-family: 'Keifont','Regular';
+    font-size: 45px;
+    position: relative;
+    background: linear-gradient(transparent 60%,#358CED 90%);
+}
+
+.member-card {
+    width: 362px;
+    height: 500px;
+}
+
+img.member-img1 {
+    width: 227px;
+    height: 341px;
+    position: absolute;
+    left: 100px;
+}
+
+img.member-img2 {
+    width:150px;
+    height: 150px;
+    position:relative;
+    top: 270px;
+    left: 200px;
+}
+
+/* 各メンバーページ　*/
+
+.member-page-area > .member-page-title {
+    margin-top: 200px;
+}
+
+.member-page-area > .container{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.member-page-title {
+    display: flex;
+    justify-content:center;
+    margin-bottom: 200px;
+}
+
+.member-page-area > .container {
+    display: flex;
+    justify-content:center;
+}
+
+h3.member-page-intro {
+    text-align: center;
+}
+
+.member-page-area > .container > .member-page-img {
+    width: 350px;
+    height: 500px;
+    position:relative;
+}
+
+.member-page-area > .container > .member-page-pokemon {
+    width: 350px;
+    height: 350px;
+    position:relative;
+    top: 0px;
+    left: 0px;
+    margin: 0;
+    padding: 0;
+}
+
+.member-page-title > h1.ttl-member {
+    font-family: 'Keifont','Regular';
+    font-size: 64px;
+    position: relative;
+    background: linear-gradient(transparent 60%,#358CED 90%);
+}
+
+.member-int-container > h3.member-page-intro {
+    font-family: 'Source Hans Sans JP', 'Regular';
+    font-size: 15px;
+    line-height: 150%;
+    text-align: center;
+}
+
+.member-page-area > .container > h1.ttl-member2 {
+    font-family: 'Keifont','Regular';
+    font-size: 40px;
+    left: 0;
+    position: relative;
+    background: linear-gradient(transparent 60%,#358CED 90%);
+    padding: 0;
+    margin: 0;
+}
+
+/* コンタクトページ　*/
+
+
+.contact-area > .container > .contact-title {
+    display: flex;
+    justify-content: center;
+    left:10px;
+}
+
+.contact-title > h1.ttl-contact {
+    font-family: 'Keifont','Regular';
+    font-size: 128%;
+    position: relative;
+    background: linear-gradient(transparent 60%,#358CED 90%);
+}
+
+.contact-area > .container > .contact-home-area > .contact-p {
+    display:flex;
+    justify-content: center;
+}
+
+.contact-area > .container > .contact-home-area p{
+    font-family: 'Keifont','Regular';
+    font-size: 80%;
+    position: relative;
+    margin-bottom: 120px;
+}
+
+
+dl{
+    width: 200px;
+    border-top: 1px solid #358CED;
+    border-right: 1px solid #358CED;
+    border-left: 1px solid #358CED; 
+    margin-left: 0px;
+}
+
+dl dd {
+    border-bottom: 1px solid #358CED;
+    margin:0;
+    padding: 1px 0 1px 18px;
+}
+
+label {
+    margin-right: 1px;
+    
+}
+
+input {
+    font-size: 15px;
+    padding: 5px;
+}
+
+
+dl dt{
+    font-family: "Keifont","Regular";
+    font-size: 15px;
+    display: flex;
+    padding: 30px;
+}
+
+input[type="text"] {
+    width: 150px;
+}
+
+input[type="email"] {
+    width: 150px;
+}
+
+textarea {
+    width: 150px;
+}
+
+dl dt .must{
+    color: #d23939;
+}
+
+p.submit {
+    text-align: center;
+}
+
+input[type="submit"] {
+    padding: 20px 50px;
+    background: #358CED;
+    color:aliceblue;
+    font-weight: bolder;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+
+}
