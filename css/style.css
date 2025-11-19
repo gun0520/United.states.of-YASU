@@ -1,780 +1,426 @@
 @charset "utf-8";
 
-a {
-    color: #333;
-    text-decoration:none;
+/* ============================================
+   基本設定 (リセット・共通)
+   ============================================ */
+* {
+    box-sizing: border-box; /* パディングを含めた幅計算にする */
 }
 
-.container {
-    max-width: auto;
-    padding: 0 0;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Hans Sans JP', sans-serif;
+    color: #333;
+    width: 100%;
+    overflow-x: hidden; /* 横スクロール防止 */
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+ul, li {
+    list-style: none;
+    padding: 0;
     margin: 0;
 }
 
-/*メインビュータイトル*/
+/* 画像のレスポンシブ対応：これが最も重要 */
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
 
+/* 共通コンテナ：PC幅の上限を決めて中央寄せ */
+.container {
+    width: 100%;
+    max-width: 1200px; /* PCでの最大幅 */
+    margin: 0 auto;
+    padding: 0 20px; /* スマホで端がくっつかないように */
+    position: relative;
+}
+
+/* ============================================
+   メインビュー (Top View)
+   ============================================ */
 .area-top-view {
-    height: 626px;
+    height: 80vh; /* 画面の高さの80% */
+    min-height: 500px;
+    max-height: 800px;
+    position: relative;
+    overflow: hidden;
 }
 
 .area-top-view > .container {
-    height: 626px;
-    display:flex;
-    padding: 0 0;
-    margin: 0 auto;
-}
-
-.area-top-view > .container > .back {
+    height: 100%;
+    display: flex;
+    align-items: center; /* 垂直方向中央 */
     position: relative;
 }
 
+/* 背景画像のように扱う要素 */
 .area-top-view > .container > .img {
     position: absolute;
-    height: 626px;
+    top: 0;
+    right: 0;
+    width: 60%; /* 画面の右側60%を占める */
+    height: 100%;
+    object-fit: cover; /* 比率を保ったままトリミング */
+    z-index: -1;
+    animation: slidein 2s ease;
 }
 
 #title {
-    padding: 0 0;
-    margin: 0;
-    top:0px;;
-    left:40px;
+    font-size: clamp(2rem, 5vw, 4rem); /* 画面幅に応じてフォントサイズ可変 */
+    margin-top: 50px;
 }
 
 #uxu {
-    padding: auto;
-    left: 726px;
+    /* 必要に応じて調整 */
+    display: none; /* レイアウト崩れの原因になりやすいため、一旦非表示か調整推奨 */
 }
 
-/* ナビゲーション　*/
-
+/* ============================================
+   ナビゲーション
+   ============================================ */
 .home > .nav-container {
-    background-image: url(../img/nav/nav_navback.png) ;
-    background-size: 100% 100%;
+    /* 背景画像がある場合、比率を保つ工夫が必要 */
     width: 160px;
-    height: 420px;
-    margin-top: 100px;
-    position: sticky;
-    top:100px;
+    padding: 20px;
+    margin-top: 50px;
+    position: sticky; /* スクロール追従 */
+    top: 100px;
+    z-index: 100;
+    background-size: cover;
+    /* 画像がない場合のフォールバック色 */
+    background-color: rgba(255, 255, 255, 0.8); 
 }
 
-.nav-area a {
-    display:block;
-}
-
-
-
-.nav-area > .nav-icon img{
-    position:relative;
-    top: 25px;
+.nav-area > .nav-icon img {
     width: 80px;
-    height:80px;
-    padding: 0 0;
-    margin: 0 0;
+    transition: transform 0.8s;
 }
 
-
-
-.nav-area {
-    list-style: none;
+.nav-icon:hover img {
+    transform: scale(1.2);
 }
 
-
-/* USYについて */
-.head-home{
-    display: flex;
-    justify-content: center;
-}
-
-.head-home h1.ttl1 {
-    font-family: 'Jockey One';
-    font-size: 128px;
-    position: relative;
-    background: linear-gradient(transparent 60%,#358CED 90%);
-}
-
-.head-home h1.ttl2 {
-    font-family: 'Meiryo', 'Regular';
-    font-size: 64px;
-    position: relative;
-    top: 120px;
-}
-
-.text p {
-    font-family: 'Source Hans Sans JP', 'Regular';
-    font-size: 36px;
-    line-height: 90px;
+/* ============================================
+   セクション共通タイトル
+   ============================================ */
+h1.ttl1, h1.ttl-ie, h1.ttl-member, h1.ttl-contact {
+    font-family: 'Keifont', sans-serif;
+    font-size: clamp(3rem, 8vw, 8rem); /* 可変フォントサイズ */
     text-align: center;
+    margin: 100px 0 50px;
+    background: linear-gradient(transparent 60%, #358CED 90%);
+    display: inline-block; /* 線を文字幅に合わせる */
 }
 
-.text > .description > span.marker{
-    background: linear-gradient(transparent 60%,#358CED 90%);
+.head-home, .head-ie, .contact-title, .member-title {
+    text-align: center; /* タイトル中央寄せ */
 }
 
-/* 本拠地　*/
-.head-ie h1.ttl-ie{
-    display:flex;
-    justify-content: center;
-    margin-top: 400px;
-    margin-left: 45px;
+/* ============================================
+   テキストエリア
+   ============================================ */
+.text p {
+    font-size: clamp(1rem, 2vw, 2.25rem);
+    line-height: 2;
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-.head-ie h1.ttl-ie {
-    font-family: 'Keifont','Regular';
-    font-size: 128px;
-    position: relative;
-}
-
+/* ============================================
+   Mapエリア
+   ============================================ */
 div.Map {
     display: flex;
     justify-content: center;
-    margin-bottom: 300px;
+    margin-bottom: 150px;
+    width: 100%;
 }
 
+div.Map iframe {
+    /* Google Mapなどの埋め込みを想定 */
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9; /* 比率固定 */
+}
 
-/* フッター　*/
+/* ============================================
+   メンバーカードエリア
+   ============================================ */
+.member-card-area > .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+.member-card {
+    width: 100%;
+    max-width: 450px; /* PCでのカード最大幅 */
+    position: relative;
+    /* カード自体の高さを画像に合わせるため固定heightは削除 */
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+}
+
+.member-card:hover {
+    transform: scale(1.05);
+}
+
+/* メンバーのメイン画像 */
+img.member-img1 {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 重ねるポケモン画像 */
+img.member-img2 {
+    width: 40%; /* 親要素に対して40%の幅 */
+    height: auto;
+    position: absolute;
+    bottom: -20px; /* 下にはみ出させる */
+    right: -20px;  /* 右にはみ出させる */
+    z-index: 10;
+}
+
+/* ============================================
+   メンバー個別ページ詳細
+   ============================================ */
+.member-page-area > .container {
+    display: flex;
+    flex-wrap: wrap; /* スマホで縦並びにするため */
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 200px;
+}
+
+.member-page-img {
+    width: 100%;
+    max-width: 450px;
+    position: relative; /* ポケモン画像を絶対配置するため */
+}
+
+/* 個別ページのポケモン画像 */
+.member-page-pokemon {
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(20%, 20%); /* 少しずらす */
+}
+
+.member-int-container {
+    flex: 1; /* 残りの幅を使う */
+    min-width: 300px; /* 小さくなりすぎないように */
+}
+
+h3.member-page-intro {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    text-align: left;
+}
+
+/* ============================================
+   お問い合わせフォーム
+   ============================================ */
+.contact-area form {
+    max-width: 800px;
+    margin: 0 auto 100px;
+}
+
+dl {
+    width: 100%;
+    border: 1px solid #358CED;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Flexboxを使ってDL/DT/DDを組む */
+.form-row {
+    display: contents; /* DL直下のdivがあればこれで無視させる、なければ構造見直し推奨 */
+}
+
+/* ここでは標準的なDL構造と仮定して、Flexboxでレイアウトします */
+/* ただしHTML構造が dl > dt, dd, dt, dd... の場合 */
+dl {
+    display: grid;
+    grid-template-columns: 30% 70%; /* 左30% 右70% */
+    border-bottom: none;
+}
+
+dt {
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-bottom: 1px solid #358CED;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+dd {
+    margin: 0;
+    padding: 20px;
+    border-bottom: 1px solid #358CED;
+    border-left: 1px solid #358CED; /* スマホ切り替え時に消す用 */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%; /* 親要素いっぱい */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    display: block;
+    margin: 50px auto;
+    padding: 20px 100px;
+    background: #358CED;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+input[type="submit"]:hover {
+    opacity: 0.8;
+}
+
+/* ============================================
+   フッター
+   ============================================ */
 footer {
     background-color: #2F80ED;
-    height:198px;
-}
-
-footer > .container {
-    padding-top: 50px;
-    padding-left: 110px;
-}
-
-.footer-nav {
-    display: flex;
-}
-
-.footer-nav li + li{
-    margin-left: 128px;
-}
-
-.footer-nav > li {
-    list-style: none;
-}
-
-.footer-nav a {
+    padding: 50px 0;
     color: #fff;
-    text-decoration: none;
-    font-family: 'Keifont','Regular';
-    font-size: 64px;
 }
 
 .footer-nav ul {
-    padding: 0;
-}
-
-/* メンバーカード　*/
-
-.member-area > .container > .member-title{
     display: flex;
     justify-content: center;
-    margin-left: 320px;
-    margin-bottom: 200px;
-}
-
-.member-area h1.ttl-member {
-    font-family: 'Keifont','Regular';
-    font-size: 128px;
-    position: relative;
-    background: linear-gradient(transparent 60%,#358CED 90%);
-}
-
-.member-card-area > .container {
-    display:flex;
+    gap: 50px; /* Flexboxのgapで間隔調整 */
     flex-wrap: wrap;
-    justify-content: right;
-    gap:50px;
-}
-
-.member-card {
-    width: 500px;
-    height: 900px;
-}
-
-img.member-img1 {
-    width: 454px;
-    height: 682px;
-    position: absolute;
-}
-
-img.member-img2 {
-    width:300px;
-    height: 300px;
-    position:relative;
-    top: 470px;
-    left: 250px;
-}
-
-/* お問い合わせフォーム　*/
-
-.contact-area > .container > .contact-title {
-    display: flex;
-    justify-content: center;
-}
-
-.contact-title > h1.ttl-contact {
-    font-family: 'Keifont','Regular';
-    font-size: 128px;
-    position: relative;
-    background: linear-gradient(transparent 60%,#358CED 90%);
-}
-
-.contact-area > .container > .contact-home-area > .contact-p {
-    display:flex;
-    justify-content: center;
-}
-
-.contact-area > .container > .contact-home-area p{
-    font-family: 'Keifont','Regular';
-    font-size: 24px;
-    position: relative;
-    margin-bottom: 120px;
-}
-
-.contact-area > .container {
-    margin-left: 150px;
-}
-
-dl{
-    width: 990px;
-    border-top: 1px solid #358CED;
-    border-right: 1px solid #358CED;
-    border-left: 1px solid #358CED; 
-    margin-left: 160px;
-}
-
-dl dd {
-    border-bottom: 1px solid #358CED;
-    margin:0;
-    padding: 1em 0 1em 18em;
-}
-
-label {
-    margin-right: 1em;
-    
-}
-
-input {
-    font-size: 1em;
-    padding: 5px;
-}
-
-
-dl dt{
-    font-family: "Keifont","Regular";
-    font-size: 20px;
-    display: flex;
-    padding: 30px;
-}
-
-input[type="text"] {
-    width: 300px;
-}
-
-input[type="email"] {
-    width: 300px;
-}
-
-dl dt .must{
-    color: #d23939;
-}
-
-p.submit {
-    text-align: center;
-}
-
-input[type="submit"] {
-    padding: 20px 100px;
-    background: #358CED;
-    color:aliceblue;
-    font-weight: bolder;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-/* 各メンバーページ　*/
-.member-page-area > .member-page-title {
-    margin-top: 200px;
-}
-
-.member-page-area > .container{
-    margin-top: 40px;
-    margin-bottom: 400px;
-}
-
-.member-page-title {
-    display: flex;
-    justify-content:center;
-    margin-bottom: 200px;
-}
-
-.member-page-area > .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:center;
-}
-
-h3.member-page-intro {
-    text-align: center;
-}
-
-.member-page-area > .container > .member-int-container{
-    width: 700px;
-    height: auto;
-}
-
-.member-page-area > .container > .member-page-img {
-    width: 454px;
-    height: 682px;
-    position:relative;
-}
-
-.member-page-area > .container > .member-page-pokemon {
-    width:400px;
-    height: 400px;
-    position:absolute;
-    top: 1620px;
-    left: 780px;
-    margin: 0;
-    padding: 0;
-}
-
-.member-page-title > h1.ttl-member {
-    font-family: 'Keifont','Regular';
-    font-size: 128px;
-    position: relative;
-    background: linear-gradient(transparent 60%,#358CED 90%);
-}
-
-.member-int-container > h3.member-page-intro {
-    font-family: 'Source Hans Sans JP', 'Regular';
-    font-size: 33px;
-    line-height: 150%;
-    text-align: center;
-}
-
-.member-page-area > .container > h1.ttl-member2 {
-    font-family: 'Keifont','Regular';
-    font-size: 80px;
-    left: 250px;
-    position: relative;
-    background: linear-gradient(transparent 60%,#358CED 90%);
-    padding: 0;
-    margin: 0;
-}
-
-/*　アニメーション定義 */
-.nav-icon:hover img {
-    transform: scale(1.2);
-    transition: 0.8s all;
-}
-
-.member-card:hover img {
-    transform: scale(1.2);
-    transition: 0.5s all;
-}
-
-footer{
-    ul{
-        li{
-            a {
-                font-size: 2rem;
-                &:hover {
-                    color: #000;
-                }
-            }
-        }
-    }
-}
-
-/*　CSSアニメーション */
-
-.area-top-view > .container > .img {
-    animation-duration: 2s;
-    animation-name: slidein;
-    animation-timing-function: ease;
-}
-
-.area-home-about > .container > .head-home {
-    animation-duration: 2s;
-    animation-name: slidein;
-    animation-timing-function: ease;
-}
-
-.area-home-about > .container > .text {
-    animation-duration: 2s;
-    animation-name: slidein;
-    animation-timing-function: ease;
-}
-
-
-.area-home-ie > .container > .head-ie {
-    animation-duration: 2s;
-    animation-name: slidein;
-    animation-timing-function: ease;
-}
-
-.member-area > .container > .member-title{
-        animation-duration: 2s;
-        animation-name: fadeup;
-        animation-timing-function: ease;
-}
-
-@keyframes slidein {
-    from{
-        margin-left:50%;
-        opacity: 0;
-    }
-
-    to {
-        margin-left: 0%;
-        opacity: 100%;
-    }
-}
-
-@keyframes fadeup {
-    from{
-        opacity: 0;
-        font-size: 0;
-    }
-    to {
-        opacity: 100%;
-        font-size: 100%;
-    }
-}
-
-/* レスポンシブデザインチャレンジ */
-
-/*スマホ*/
-@media screen and (max-width: 768px) {
-    
-body{
-    width: 362px;
-}
-
-/*メインビュータイトル*/
-
-.area-top-view {
-    width: 362px;
-    height: 300px;
-}
-
-.area-top-view > .container {
-    width: 362px;
-    height: 300px;
-    display:flex;
-    padding: 0 0;
-    margin: 0 auto;
-}
-
-.area-top-view > .container > .back {
-    position: relative;
-    width: 362px;
-}
-
-.area-top-view > .container > .img {
-    position: absolute;
-    height: 300px;
-}
-
-.area-top-view > .container > #uxu {
-    position: absolute;
-    height: 300px;
-}
-
-#title {
-    padding: 0 0;
-    margin: 0;
-    top:0px;;
-    left:20px;
-}
-
-#uxu {
-    padding: auto;
-    left: 100px;
-    display: none;
-}
-
-
-/* ナビゲーション　*/
-
-.home > .nav-container {
-    background-image: url(../img/nav/nav_navback.png) ;
-    background-size: 100% 100%;
-    width: 80px;
-    height: 210px;
-    margin-top: 100px;
-    position: sticky;
-    top:100px;
-}
-
-.nav-area > .nav-icon img{
-    position:relative;
-    top: 15px;
-    left: -20px;
-    width: 40px;
-    height:40px;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-}
-
-/* USYについて */
-.head-home h1.ttl1 {
-    font-family: 'Jockey One';
-    font-size: 64px;
-    position: relative;
-    background: linear-gradient(transparent 60%,#358CED 90%);
-}
-
-.head-home h1.ttl2 {
-    font-family: 'Meiryo', 'Regular';
-    font-size: 32px;
-    position: relative;
-    top: 70px;
-}
-
-.text p {
-    font-family: 'Source Hans Sans JP', 'Regular';
-    font-size: 10px;
-    line-height: 45px;
-    text-align: center;
-}
-
-/* 本拠地　*/
-
-.head-ie h1.ttl-ie {
-    font-family: 'Keifont','Regular';
-    font-size: 64px;
-    position: relative;
-}
-
-div.Map {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 300px;
-    width: 362px;
-    height: 400px;
-}
-
-/* フッター */
-
-footer > .container {
-    padding-top: 25px;
-    padding-left:2px;
-}
-
-.footer-nav li + li{
-    margin-left: 15px;
-}
-
-.footer-nav > li {
-    list-style: none;
 }
 
 .footer-nav a {
     color: #fff;
-    text-decoration: none;
-    font-family: 'Keifont','Regular';
-    font-size: 18px;
+    font-family: 'Keifont', sans-serif;
+    font-size: 2rem;
 }
 
-footer {
-    height:99px;
+/* ============================================
+   アニメーション定義
+   ============================================ */
+@keyframes slidein {
+    from { margin-left: 50%; opacity: 0; }
+    to { margin-left: 0%; opacity: 1; }
 }
 
-/* メンバーカード */
-
-.member-area > .container > .member-title{
-    display: flex;
-    justify-content: center;
-    margin-left: 60px;
-    margin-bottom: 200px;
+@keyframes fadeup {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.member-area h1.ttl-member {
-    font-family: 'Keifont','Regular';
-    font-size: 45px;
-    position: relative;
-    background: linear-gradient(transparent 60%,#358CED 90%);
-}
-
-.member-card {
-    width: 362px;
-    height: 500px;
-}
-
-img.member-img1 {
-    width: 227px;
-    height: 341px;
-    position: absolute;
-    left: 100px;
-}
-
-img.member-img2 {
-    width:150px;
-    height: 150px;
-    position:relative;
-    top: 270px;
-    left: 200px;
-}
-
-/* 各メンバーページ　*/
-
-.member-page-area > .member-page-title {
-    margin-top: 200px;
-}
-
-.member-page-area > .container{
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
-.member-page-title {
-    display: flex;
-    justify-content:center;
-    margin-bottom: 200px;
-}
-
-.member-page-area > .container {
-    display: flex;
-    justify-content:center;
-}
-
-h3.member-page-intro {
-    text-align: center;
-}
-
-.member-page-area > .container > .member-page-img {
-    width: 350px;
-    height: 500px;
-    position:relative;
-}
-
-.member-page-area > .container > .member-page-pokemon {
-    width: 350px;
-    height: 350px;
-    position:relative;
-    top: 0px;
-    left: 0px;
-    margin: 0;
-    padding: 0;
-}
-
-.member-page-title > h1.ttl-member {
-    font-family: 'Keifont','Regular';
-    font-size: 64px;
-    position: relative;
-    background: linear-gradient(transparent 60%,#358CED 90%);
-}
-
-.member-int-container > h3.member-page-intro {
-    font-family: 'Source Hans Sans JP', 'Regular';
-    font-size: 15px;
-    line-height: 150%;
-    text-align: center;
-}
-
-.member-page-area > .container > h1.ttl-member2 {
-    font-family: 'Keifont','Regular';
-    font-size: 40px;
-    left: 0;
-    position: relative;
-    background: linear-gradient(transparent 60%,#358CED 90%);
-    padding: 0;
-    margin: 0;
-}
-
-/* コンタクトページ　*/
-
-
-.contact-area > .container > .contact-title {
-    display: flex;
-    justify-content: center;
-    left:10px;
-}
-
-.contact-title > h1.ttl-contact {
-    font-family: 'Keifont','Regular';
-    font-size: 128%;
-    position: relative;
-    background: linear-gradient(transparent 60%,#358CED 90%);
-}
-
-.contact-area > .container > .contact-home-area > .contact-p {
-    display:flex;
-    justify-content: center;
-}
-
-.contact-area > .container > .contact-home-area p{
-    font-family: 'Keifont','Regular';
-    font-size: 80%;
-    position: relative;
-    margin-bottom: 120px;
-}
-
-
-dl{
-    width: 200px;
-    border-top: 1px solid #358CED;
-    border-right: 1px solid #358CED;
-    border-left: 1px solid #358CED; 
-    margin-left: 0px;
-}
-
-dl dd {
-    border-bottom: 1px solid #358CED;
-    margin:0;
-    padding: 1px 0 1px 18px;
-}
-
-label {
-    margin-right: 1px;
+/* ============================================
+   【スマホ・タブレット対応 (レスポンシブ)】
+   max-width: 768px以下の場合に適用
+   ============================================ */
+@media screen and (max-width: 768px) {
     
-}
+    /* タイトルサイズの調整 */
+    h1.ttl1, h1.ttl-ie, h1.ttl-member, h1.ttl-contact {
+        font-size: 2.5rem;
+        margin: 50px 0 30px;
+    }
 
-input {
-    font-size: 15px;
-    padding: 5px;
-}
+    /* Top Viewの調整 */
+    .area-top-view {
+        height: auto; /* 高さをなりゆきに */
+        padding: 50px 0;
+    }
 
+    .area-top-view > .container {
+        flex-direction: column-reverse; /* 画像を上に、タイトルを下に */
+        justify-content: center;
+    }
 
-dl dt{
-    font-family: "Keifont","Regular";
-    font-size: 15px;
-    display: flex;
-    padding: 30px;
-}
+    .area-top-view > .container > .img {
+        position: relative; /* 絶対配置解除 */
+        width: 100%;
+        height: 300px; /* スマホでの高さ */
+        margin-bottom: 20px;
+    }
 
-input[type="text"] {
-    width: 150px;
-}
+    #title {
+        text-align: center;
+        margin: 0;
+    }
 
-input[type="email"] {
-    width: 150px;
-}
+    /* ナビゲーション */
+    .home > .nav-container {
+        width: 100%; /* 横幅いっぱい */
+        height: auto;
+        position: fixed; /* 下固定にする場合など */
+        bottom: 0;
+        top: auto;
+        margin: 0;
+        padding: 10px;
+        display: flex;
+        justify-content: space-around; /* アイコンを均等配置 */
+        background-image: none;
+        background-color: #fff;
+        border-top: 1px solid #ccc;
+    }
+    
+    .nav-area > .nav-icon img {
+        width: 40px;
+        top: 0;
+    }
 
-textarea {
-    width: 150px;
-}
+    /* フォームの縦積み */
+    dl {
+        grid-template-columns: 1fr; /* 1カラムにする */
+    }
+    
+    dd {
+        border-left: none;
+        padding-top: 0; /* DTとの距離を詰める */
+    }
 
-dl dt .must{
-    color: #d23939;
-}
+    /* メンバー詳細の縦積み */
+    .member-page-area > .container {
+        flex-direction: column;
+        align-items: center;
+    }
 
-p.submit {
-    text-align: center;
-}
+    h3.member-page-intro {
+        text-align: center; /* スマホでは中央揃え */
+        font-size: 1rem;
+    }
 
-input[type="submit"] {
-    padding: 20px 50px;
-    background: #358CED;
-    color:aliceblue;
-    font-weight: bolder;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-
+    /* フッター */
+    .footer-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .footer-nav a {
+        font-size: 1.5rem;
+    }
 }
