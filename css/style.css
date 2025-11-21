@@ -46,41 +46,78 @@ img {
 /* ============================================
    メインビュー (Top View)
    ============================================ */
+/* メインビュー全体 */
 .area-top-view {
-    height: 80vh; /* 画面の高さの80% */
-    min-height: 500px;
-    max-height: 800px;
-    position: relative;
-    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
-.area-top-view > .container {
-    height: 100%;
-    display: flex;
-    align-items: center; /* 垂直方向中央 */
-    position: relative;
+/* 画像コンテナ（基準） */
+.mainvis-container {
+    position: relative; /* 子要素の絶対配置の基準点 */
+    width: 100%;
+    max-width: 1200px; /* 必要であれば最大幅を指定 */
+    margin: 0 auto;
 }
 
-/* 背景画像のように扱う要素 */
-.area-top-view > .container > .img {
-    position: absolute;
+/* 1. 背景画像設定 */
+.mv-back {
+    width: 100%;
+    height: auto;
+    display: block; /* 画像下の隙間消し */
+    /* 背面に配置 */
+    position: relative;
+    z-index: 1; 
+}
+
+/* 2. オーバーレイ（背景の上に被せる透明な幕） */
+.mv-overlay {
+    position: absolute; /* 背景の上に浮かる */
     top: 0;
-    right: 0;
-    width: 60%; /* 画面の右側60%を占める */
+    left: 0;
+    width: 100%; /* 背景と同じ大きさ */
     height: 100%;
-    object-fit: cover; /* 比率を保ったままトリミング */
-    z-index: -1;
-    animation: slidein 2s ease;
+    z-index: 2; /* 背景より手前 */
+    
+    /* ここで左右分割のためのFlexbox設定 */
+    display: flex; 
+    flex-direction: row; /* 横並び */
 }
 
-#title {
-    font-size: clamp(2rem, 5vw, 4rem); /* 画面幅に応じてフォントサイズ可変 */
-    margin-top: 50px;
+/* 左右のエリア共通設定（50%ずつ分ける） */
+.mv-half {
+    flex: 1; /* 余白を均等に分け合う＝自動的に50%ずつになる */
+    display: flex; /* 中身の画像をさらに中央揃えするため */
+    justify-content: center; /* 水平方向の中央 */
+    align-items: center;     /* 垂直方向の中央 */
+    height: 100%;            /* 高さは親(overlay)いっぱい */
 }
 
-#uxu {
-    /* 必要に応じて調整 */
-    display: none; /* レイアウト崩れの原因になりやすいため、一旦非表示か調整推奨 */
+/* 左エリア固有設定（微調整用） */
+.left-area {
+    /* 必要ならパディングなどで調整 */
+    /* padding-left: 20px; */ 
+}
+
+/* 右エリア固有設定（微調整用） */
+.right-area {
+    /* padding-right: 20px; */
+}
+
+/* 中身の画像（タイトルとキャラ） */
+.mv-item {
+    width: 80%;   /* 各エリアの幅に対して80%の大きさ（端にくっつきすぎないように） */
+    max-width: 400px; /* 大きくなりすぎ防止 */
+    height: auto; /* 比率維持 */
+    
+    /* ふわっと出すアニメーション */
+    animation: fadeup 1.5s ease-out forwards;
+}
+
+@keyframes fadeup {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================
@@ -373,19 +410,28 @@ footer {
 
     /* ナビゲーション */
     .home > .nav-container {
-        width: 100%; /* 横幅いっぱい */
-        height: auto;
-        position: fixed; /* 下固定にする場合など */
-        bottom: 0;
-        top: auto;
-        margin: 0;
-        padding: 10px;
-        display: flex;
-        justify-content: space-around; /* アイコンを均等配置 */
-        background-image: none;
-        background-color: #fff;
-        border-top: 1px solid #ccc;
-    }
+    /* --- 既存の設定（位置固定など）はそのまま --- */
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    /* border-bottom: 1px solid #eee; ←背景画像によっては枠線が不要になるかもしれません。お好みで調整してください */
+
+    /* --- ▼▼ 今回追加する背景設定 ▼▼ --- */
+    background-image: url('./img/nav/nav_navback.png'); /* ※画像のパスはご自身の環境に合わせて調整してください */
+    
+    /* 背景画像のサイズ調整：縦横比を保ったまま、領域全体を覆うように表示 */
+    background-size: cover;
+    
+    /* 画像を繰り返さない */
+    background-repeat: no-repeat;
+    
+    /* 画像の位置を中央に合わせる */
+    background-position: center center;
+    
+    /* もし以前の background-color が残っていたら削除してください */
+    /* background-color: rgba(255, 255, 255, 0.9); */
+}
     
     .nav-area > .nav-icon img {
         width: 40px;
@@ -414,13 +460,46 @@ footer {
     }
 
     /* フッター */
-    .footer-nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
+    /* フッター全体 */
+    footer {
+        background-color: #2F80ED;
+        padding: 50px 0;
+        color: #fff;
     }
-    
+
+    footer > .container {
+        padding: 0;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    /* ナビゲーションリスト（ul）をFlexboxにする */
+    .footer-nav {
+        display: flex;           /* ★ここで横並びにする */
+        justify-content: center; /* 画面の中央に寄せる */
+        align-items: center;     /* 縦方向の中央揃え */
+        flex-wrap: wrap;         /* 画面が狭いときに折り返す設定（安全策） */
+        padding: 0;
+        margin: 0;
+        list-style: none;        /* リストの「・」を消す */
+    }
+
+    /* 各リストアイテム（li）の間隔設定 */
+    .footer-nav li {
+        margin: 0 30px; /* 左右に30pxずつの隙間を空ける */
+    }
+
+    /* リンクの文字設定 */
     .footer-nav a {
-        font-size: 1.5rem;
+        color: #fff;
+        text-decoration: none;
+        font-family: 'Keifont', 'Regular', sans-serif;
+        font-size: 50px; /* 文字サイズはお好みで調整してください */
+        transition: opacity 0.3s;
+    }
+
+    .footer-nav a:hover {
+        opacity: 0.7;
     }
 }
