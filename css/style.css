@@ -410,6 +410,25 @@ footer {
         margin: 0;
     }
 
+    #nav {
+        width: 100%;
+    }
+
+    #nav ul li {
+        width: 100%;
+        float: none;
+    }
+
+    #main, #sidebar {
+        width: 100%;
+        float: none;
+        padding: 10px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
     /* ナビゲーション */
     .home > .nav-container {
     /* --- 既存の設定（位置固定など）はそのまま --- */
